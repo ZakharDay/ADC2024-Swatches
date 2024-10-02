@@ -9,4 +9,11 @@
     <%= project.description %>
   </p>
 
+  <div class="fillsTeaser">
+    <% project.swatches.each do |swatch| %>
+      <% swatch.fills.each do |fill| %>
+        <%= render "projects/fill", fill: fill %>
+      <% end %>
+    <% end %>
+  </div>
 </div>
