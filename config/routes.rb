@@ -1,6 +1,16 @@
 Rails.application.routes.draw do
   resources :colors
-  resources :fills
+
+  resources :fills do
+    collection do
+      get "solid"
+      get "gradient"
+    end
+  end
+
+  # get "fills/color"
+  # get "fills/gradient"
+
   resources :swatches
   resources :projects
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
