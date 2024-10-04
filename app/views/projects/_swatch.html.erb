@@ -1,0 +1,9 @@
+<h3>
+  <%= swatch.name %>
+</h3>
+
+<div class="fillsTeaser">
+  <% swatch.fills.each do |fill| %>
+    <%= render "projects/fill", fill: fill %>
+  <% end %>
+</div>

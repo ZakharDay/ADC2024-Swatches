@@ -2554,6 +2554,14 @@ def create_swatches(quantity)
       puts "Swatch with name #{swatch.name} for project with name #{swatch.project.name} just created"
     end
   end
+
+  i = 1
+
+  quantity.to_a.sample.times do
+    swatch = Swatch.create!(name: "Swatch #{i}")
+    i += 1
+    puts "Swatch with name #{swatch.name} just created"
+  end
 end
 
 def create_fills(quantity)

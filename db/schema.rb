@@ -38,13 +38,11 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_02_094247) do
 
   create_table "swatches", force: :cascade do |t|
     t.string "name"
-    t.integer "project_id", null: false
+    t.integer "project_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["project_id"], name: "index_swatches_on_project_id"
   end
 
   add_foreign_key "colors", "fills"
   add_foreign_key "fills", "swatches"
-  add_foreign_key "swatches", "projects"
 end

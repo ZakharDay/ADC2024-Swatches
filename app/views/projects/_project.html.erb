@@ -1,19 +1,13 @@
 <div id="<%= dom_id project %>">
-  <p>
-    <strong>Name:</strong>
-    <%= project.name %>
-  </p>
+  <h2>
+    <%= link_to project.name, project %>
+  </h2>
 
   <p>
-    <strong>Description:</strong>
     <%= project.description %>
   </p>
 
-  <div class="fillsTeaser">
-    <% project.swatches.each do |swatch| %>
-      <% swatch.fills.each do |fill| %>
-        <%= render "projects/fill", fill: fill %>
-      <% end %>
-    <% end %>
-  </div>
+  <% project.swatches.each do |swatch| %>
+    <%= render "projects/swatch", swatch: swatch %>
+  <% end %>
 </div>
