@@ -1,9 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: MyString
-  swatch: one
+  stop: 1
+  color: MyString
+  alpha: 1
+  fill: one
 
 two:
-  name: MyString
-  swatch: two
+  stop: 1
+  color: MyString
+  alpha: 1
+  fill: two

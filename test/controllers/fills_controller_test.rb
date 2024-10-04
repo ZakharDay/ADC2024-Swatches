@@ -17,7 +17,7 @@ class FillsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create fill" do
     assert_difference("Fill.count") do
-      post fills_url, params: { fill: { color: @fill.color, name: @fill.name, swatch_id: @fill.swatch_id } }
+      post fills_url, params: { fill: { name: @fill.name, swatch_id: @fill.swatch_id } }
     end
 
     assert_redirected_to fill_url(Fill.last)
@@ -34,7 +34,7 @@ class FillsControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update fill" do
-    patch fill_url(@fill), params: { fill: { color: @fill.color, name: @fill.name, swatch_id: @fill.swatch_id } }
+    patch fill_url(@fill), params: { fill: { name: @fill.name, swatch_id: @fill.swatch_id } }
     assert_redirected_to fill_url(@fill)
   end
 

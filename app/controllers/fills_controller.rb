@@ -65,6 +65,6 @@ class FillsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def fill_params
-      params.require(:fill).permit(:name, :color, :swatch_id)
+      params.require(:fill).permit(:name, :swatch_id)
     end
 end

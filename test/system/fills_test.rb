@@ -14,7 +14,6 @@ class FillsTest < ApplicationSystemTestCase
     visit fills_url
     click_on "New fill"
 
-    fill_in "Color", with: @fill.color
     fill_in "Name", with: @fill.name
     fill_in "Swatch", with: @fill.swatch_id
     click_on "Create Fill"
@@ -27,7 +26,6 @@ class FillsTest < ApplicationSystemTestCase
     visit fill_url(@fill)
     click_on "Edit this fill", match: :first
 
-    fill_in "Color", with: @fill.color
     fill_in "Name", with: @fill.name
     fill_in "Swatch", with: @fill.swatch_id
     click_on "Update Fill"

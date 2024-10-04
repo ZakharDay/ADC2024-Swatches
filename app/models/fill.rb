@@ -1,4 +1,4 @@
 class Fill < ApplicationRecord
   belongs_to :swatch
-  validates :name, presence: true
+  has_many :colors
 end
