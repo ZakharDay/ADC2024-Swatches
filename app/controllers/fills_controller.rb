@@ -1,5 +1,5 @@
 class FillsController < ApplicationController
-  layout "application", only: %i[ show new edit create update destroy]
+  layout "application", only: %i[ show new edit create update destroy ]
   before_action :set_fill, only: %i[ show edit update destroy ]
 
   # GET /fills or /fills.json
