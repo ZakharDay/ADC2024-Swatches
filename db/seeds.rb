@@ -2515,8 +2515,9 @@
 
 def seed
   reset_db
+  create_users(10)
   create_projects(100)
-  create_swatches(2..8)
+  create_swatches(10..20)
   create_fills(2..8)
   create_colors
 end
@@ -2537,9 +2538,26 @@ def get_random_color
   color_hex.join('')
 end
 
+def create_users(quantity)
+  i = 0
+
+  quantity.times do
+    user_data = {
+      email: "user_#{i}@email.com",
+      password: 'testtest'
+    }
+
+    user = User.create!(user_data)
+    puts "User created with id #{user.id}"
+
+    i += 1
+  end
+end
+
 def create_projects(quantity)
   quantity.times do
-    project = Project.create!(name: @companies.sample[:name])
+    user = User.all.sample
+    project = Project.create!(name: @companies.sample[:name], user: user)
     puts "Project with name #{project.name} just created"
   end
 end
@@ -2549,7 +2567,7 @@ def create_swatches(quantity)
     i = 1
 
     quantity.to_a.sample.times do
-      swatch = project.swatches.create!(name: "Swatch #{i}")
+      swatch = project.swatches.create!(name: "Swatch #{i}", user: project.user)
       i += 1
       puts "Swatch with name #{swatch.name} for project with name #{swatch.project.name} just created"
     end
@@ -2558,7 +2576,8 @@ def create_swatches(quantity)
   i = 1
 
   quantity.to_a.sample.times do
-    swatch = Swatch.create!(name: "Swatch #{i}")
+    user = User.all.sample
+    swatch = Swatch.create!(name: "Swatch #{i}", user: user)
     i += 1
     puts "Swatch with name #{swatch.name} just created"
   end
@@ -2569,7 +2588,7 @@ def create_fills(quantity)
     i = 1
 
     quantity.to_a.sample.times do
-      fill = swatch.fills.create!(name: "--color-#{i}")
+      fill = swatch.fills.create!(name: "--color-#{i}", user: swatch.user)
       i += 1
       puts "Fill with var name #{fill.name} for swatch with name #{fill.swatch.name} just created"
     end

@@ -1,4 +1,5 @@
 class Fill < ApplicationRecord
-  belongs_to :swatch
   has_many :colors
+  belongs_to :user
+  belongs_to :swatch
 end
