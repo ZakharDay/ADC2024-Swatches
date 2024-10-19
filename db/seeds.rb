@@ -2538,14 +2538,22 @@ def get_random_color
   color_hex.join('')
 end
 
+def get_random_bool
+  [true, false].sample
+end
+
 def create_users(quantity)
   i = 0
 
   quantity.times do
     user_data = {
       email: "user_#{i}@email.com",
-      password: 'testtest'
+      password: "testtest"
     }
+
+    if i == 0
+      user_data[:admin] = true
+    end
 
     user = User.create!(user_data)
     puts "User created with id #{user.id}"
@@ -2557,7 +2565,7 @@ end
 def create_projects(quantity)
   quantity.times do
     user = User.all.sample
-    project = Project.create!(name: @companies.sample[:name], user: user)
+    project = Project.create!(name: @companies.sample[:name], user: user, public: get_random_bool)
     puts "Project with name #{project.name} just created"
   end
 end
@@ -2567,7 +2575,7 @@ def create_swatches(quantity)
     i = 1
 
     quantity.to_a.sample.times do
-      swatch = project.swatches.create!(name: "Swatch #{i}", user: project.user)
+      swatch = project.swatches.create!(name: "Swatch #{i}", user: project.user, public: project.public)
       i += 1
       puts "Swatch with name #{swatch.name} for project with name #{swatch.project.name} just created"
     end
@@ -2577,7 +2585,7 @@ def create_swatches(quantity)
 
   quantity.to_a.sample.times do
     user = User.all.sample
-    swatch = Swatch.create!(name: "Swatch #{i}", user: user)
+    swatch = Swatch.create!(name: "Swatch #{i}", user: user, public: get_random_bool)
     i += 1
     puts "Swatch with name #{swatch.name} just created"
   end

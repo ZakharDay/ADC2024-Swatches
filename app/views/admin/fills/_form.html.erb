@@ -1,4 +1,4 @@
-<%= form_with(model: fill) do |form| %>
+<%= form_with(model: [:admin, fill]) do |form| %>
   <% if fill.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(fill.errors.count, "error") %> prohibited this fill from being saved:</h2>

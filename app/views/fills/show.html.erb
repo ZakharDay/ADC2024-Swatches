@@ -3,8 +3,10 @@
 <%= render @fill %>
 
 <div>
-  <%= link_to "Edit this fill", edit_fill_path(@fill) %> |
-  <%= link_to "Back to fills", fills_path %>
+  <% if current_user && current_user.admin? %>
+    <%= link_to "Edit this fill", edit_admin_fill_path(@fill) %> |
+    <%= button_to "Destroy this fill", admin_fill_path(@fill), method: :delete %>
+  <% end %>
 
-  <%= button_to "Destroy this fill", @fill, method: :delete %>
+  <%= link_to "Back to fills", admin_fills_path %>
 </div>

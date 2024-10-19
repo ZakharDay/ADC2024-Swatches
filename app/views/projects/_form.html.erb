@@ -1,4 +1,12 @@
-<%= form_with(model: project) do |form| %>
+<%
+  if current_user && current_user.admin?
+    project_model = [:admin, project]
+  elsif can? :edit, project
+    project_model = project
+  end
+%>
+
+<%= form_with(model: project_model) do |form| %>
   <% if project.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -20,6 +28,13 @@
     <%= form.label :description, style: "display: block" %>
     <%= form.text_area :description %>
   </div>
+
+  <% if current_user && current_user.admin? %>
+    <div>
+      <%= form.label :secret, style: "display: block" %>
+      <%= form.text_field :secret %>
+    </div>
+  <% end %>
 
   <div>
     <%= form.submit %>

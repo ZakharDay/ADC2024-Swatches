@@ -1,13 +1,19 @@
 <p style="color: green"><%= notice %></p>
 
 <h1><%= @project.name %></h1>
+<p><%= @project.user.email %></p>
+<p><%= @project.secret %></p>
 <p><%= @project.description %></p>
 
 <div>
-  <%= link_to "Edit this project", edit_project_path(@project) %> |
-  <%= link_to "Back to projects", projects_path %>
+  <% if can? :edit, @project %>
+    <%= link_to "Edit this project", edit_project_path(@project) %>
+    <%= button_to "Destroy this project", project_path(@project), method: :delete %>
+  <% end %>
 
-  <%= button_to "Destroy this project", @project, method: :delete %>
+  <br>
+
+  <%= link_to "Back to projects", projects_path %>
 </div>
 
 <%= render @project.swatches %>

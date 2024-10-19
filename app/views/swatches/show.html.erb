@@ -3,8 +3,10 @@
 <%= render @swatch %>
 
 <div>
-  <%= link_to "Edit this swatch", edit_swatch_path(@swatch) %> |
-  <%= link_to "Back to swatches", swatches_path %>
+  <% if current_user && current_user.admin? %>
+    <%= link_to "Edit this swatch", edit_admin_swatch_path(@swatch) %> |
+    <%= button_to "Destroy this swatch", swatch_path(@swatch), method: :delete %>
+  <% end %>
 
-  <%= button_to "Destroy this swatch", @swatch, method: :delete %>
+  <%= link_to "Back to swatches", swatches_path %>
 </div>

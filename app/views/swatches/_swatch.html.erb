@@ -1,6 +1,6 @@
 <div class="swatch" id="<%= dom_id swatch %>">
   <h2>
-    <%= swatch.name %>
+    <%= link_to swatch.name, swatch_path(swatch) %>
   </h2>
 
   <div class="fills">

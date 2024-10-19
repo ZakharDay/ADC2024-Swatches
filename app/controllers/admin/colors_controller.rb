@@ -1,4 +1,4 @@
-class ColorsController < ApplicationController
+class Admin::ColorsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_color, only: %i[ show edit update destroy ]
 
@@ -26,7 +26,7 @@ class ColorsController < ApplicationController
 
     respond_to do |format|
       if @color.save
-        format.html { redirect_to @color, notice: "Color was successfully created." }
+        format.html { redirect_to admin_color_path(@color), notice: "Color was successfully created." }
         format.json { render :show, status: :created, location: @color }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -39,7 +39,7 @@ class ColorsController < ApplicationController
   def update
     respond_to do |format|
       if @color.update(color_params)
-        format.html { redirect_to @color, notice: "Color was successfully updated." }
+        format.html { redirect_to admin_color_path(@color), notice: "Color was successfully updated." }
         format.json { render :show, status: :ok, location: @color }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -53,7 +53,7 @@ class ColorsController < ApplicationController
     @color.destroy!
 
     respond_to do |format|
-      format.html { redirect_to colors_path, status: :see_other, notice: "Color was successfully destroyed." }
+      format.html { redirect_to admin_colors_path, status: :see_other, notice: "Color was successfully destroyed." }
       format.json { head :no_content }
     end
   end

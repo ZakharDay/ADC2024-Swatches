@@ -1,19 +1,25 @@
 Rails.application.routes.draw do
   devise_for :users
-  resources :colors
 
-  resources :fills do
+  resources :projects
+  resources :swatches
+
+  resources :fills, only: [:index, :show] do
     collection do
       get "solid"
       get "gradient"
     end
   end
+  
+  namespace :admin do
+    resources :projects, only: [:create, :update]
+    resources :swatches, except: [:index, :show]
+    resources :fills,    except: [:index, :show]
 
-  # get "fills/color"
-  # get "fills/gradient"
+    resources :colors
+  end
 
-  resources :swatches
-  resources :projects
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

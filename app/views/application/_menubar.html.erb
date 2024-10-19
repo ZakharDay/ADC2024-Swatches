@@ -1,6 +1,9 @@
 <nav class="menuBar">
   <div>
     <%= link_to "Главная", root_url %>
+
+    <%# if user_signed_in? && current_user.admin? %>
+
     <%= link_to "Проекты", projects_url %>
     <%= link_to "Палитры", swatches_url %>
     <%= link_to "Цвета", fills_url %>

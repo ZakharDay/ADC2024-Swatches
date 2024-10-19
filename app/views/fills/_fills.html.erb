@@ -1,6 +1,6 @@
 <div class="fillsTeaser">
   <% fills.each do |fill| %>
-    <%= link_to fill do %>
+    <%= link_to admin_fill_path(fill) do %>
       <%= render "projects/fill", fill: fill %>
     <% end %>
   <% end %>

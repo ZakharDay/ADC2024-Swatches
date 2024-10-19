@@ -7,10 +7,11 @@
 <div id="colors">
   <% @colors.each do |color| %>
     <%= render color %>
+    
     <p>
-      <%= link_to "Show this color", color %>
+      <%= link_to "Show this color", admin_aolor_path(color) %>
     </p>
   <% end %>
 </div>
 
-<%= link_to "New color", new_color_path %>
+<%= link_to "New color", new_admin_color_path %>

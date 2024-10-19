@@ -1,0 +1,64 @@
+class Admin::FillsController < ApplicationController
+  layout "application", only: %i[ new edit create update destroy ]
+
+  before_action :authenticate_user!
+  before_action :set_fill, only: %i[ edit update destroy ]
+
+  # GET /fills/new
+  def new
+    @fill = Fill.new
+  end
+
+  # GET /fills/1/edit
+  def edit
+  end
+
+  # POST /fills or /fills.json
+  def create
+    @fill = Fill.new(fill_params)
+
+    respond_to do |format|
+      if @fill.save
+        format.html { redirect_to admin_fill_path(@fill), notice: "Fill was successfully created." }
+        format.json { render :show, status: :created, location: @fill }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @fill.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # PATCH/PUT /fills/1 or /fills/1.json
+  def update
+    respond_to do |format|
+      if @fill.update(fill_params)
+        format.html { redirect_to admin_fill_path(@fill), notice: "Fill was successfully updated." }
+        format.json { render :show, status: :ok, location: @fill }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @fill.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /fills/1 or /fills/1.json
+  def destroy
+    @fill.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to admin_fills_path, status: :see_other, notice: "Fill was successfully destroyed." }
+      format.json { head :no_content }
+    end
+  end
+
+  private
+    # Use callbacks to share common setup or constraints between actions.
+    def set_fill
+      @fill = Fill.find(params[:id])
+    end
+
+    # Only allow a list of trusted parameters through.
+    def fill_params
+      params.require(:fill).permit(:name, :swatch_id)
+    end
+end

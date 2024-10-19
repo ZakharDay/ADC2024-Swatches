@@ -1,4 +1,4 @@
-<%= form_with(model: swatch) do |form| %>
+<%= form_with(model: [:admin, swatch]) do |form| %>
   <% if swatch.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(swatch.errors.count, "error") %> prohibited this swatch from being saved:</h2>
