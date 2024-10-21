@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'PT Root UI', Arial, Helvetica, sans-serif;
+}
+
+.menuBar {
+  display: flex;
+  justify-content: space-between;
+}
+
+.swatch {
+  margin: 60px 0;
+}
+
+.fills {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  margin-top: 30px;
+}
+
+.fillCard {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--white);
+  border: 1px solid var(--medium);
+  border-radius: 5px;
+}
+
+.fillColor {
+  width: 200px;
+  height: 50px;
+}
+
+.fillCardInfo {
+  background-color: var(--white);
+  padding: 10px;
+}
+
+.fillName {
+  color: var(--dark);
+}
+
+.fillColorHex {
+}
+
+h1 {
+  font-family: 'ADC', Arial, Helvetica, sans-serif;
+  text-transform: uppercase;
+}

@@ -1,0 +1,6 @@
+.fillsTeaser {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  width: 600px;
+}
