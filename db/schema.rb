@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_18_140051) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_21_122015) do
   create_table "colors", force: :cascade do |t|
     t.integer "stop", default: 100
     t.string "color"
@@ -38,6 +38,12 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_18_140051) do
     t.integer "user_id"
     t.boolean "public", default: false
     t.string "secret"
+  end
+
+  create_table "subscriptions", force: :cascade do |t|
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "swatches", force: :cascade do |t|

@@ -8,6 +8,7 @@ class Ability
 
     can :read, Project, public: true
     can :read, Swatch, public: true
+    can :create, Subscription
 
     return unless user.present?  # additional permissions for logged in users (they can read their own posts)
     can :manage, Project, user: user

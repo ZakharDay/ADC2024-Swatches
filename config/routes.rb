@@ -10,11 +10,14 @@ Rails.application.routes.draw do
       get "gradient"
     end
   end
+
+  resources :subscriptions, only: [:create]
   
   namespace :admin do
     resources :projects, only: [:create, :update]
     resources :swatches, except: [:index, :show]
     resources :fills,    except: [:index, :show]
+    resources :subscriptions
 
     resources :colors
   end
