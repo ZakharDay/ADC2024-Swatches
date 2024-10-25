@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_10_21_122015) do
+ActiveRecord::Schema[7.2].define(version: 2024_10_21_140325) do
   create_table "colors", force: :cascade do |t|
     t.integer "stop", default: 100
     t.string "color"
@@ -21,6 +21,16 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_21_122015) do
     t.index ["fill_id"], name: "index_colors_on_fill_id"
   end
 
+  create_table "comments", force: :cascade do |t|
+    t.text "body"
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
   create_table "fills", force: :cascade do |t|
     t.string "name"
     t.integer "swatch_id", null: false
@@ -28,6 +38,18 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_21_122015) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.index ["swatch_id"], name: "index_fills_on_swatch_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "teaser"
+    t.text "body"
+    t.integer "user_id", null: false
+    t.integer "swatch_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["swatch_id"], name: "index_posts_on_swatch_id"
+    t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "projects", force: :cascade do |t|
@@ -69,5 +91,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_10_21_122015) do
   end
 
   add_foreign_key "colors", "fills"
+  add_foreign_key "comments", "posts"
+  add_foreign_key "comments", "users"
   add_foreign_key "fills", "swatches"
+  add_foreign_key "posts", "swatches"
+  add_foreign_key "posts", "users"
 end

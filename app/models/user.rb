@@ -7,4 +7,6 @@ class User < ApplicationRecord
   has_many :projects
   has_many :swatches
   has_many :fills
+  has_many :posts
+  has_many :comments
 end

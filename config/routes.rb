@@ -11,6 +11,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :posts do
+    resources :comments
+  end
+
   resources :subscriptions, only: [:create]
   
   namespace :admin do

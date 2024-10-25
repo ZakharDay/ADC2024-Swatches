@@ -4,6 +4,7 @@
     <%= link_to "Проекты", projects_url %>
     <%= link_to "Палитры", swatches_url %>
     <%= link_to "Цвета", fills_url %>
+    <%= link_to "Посты", posts_url %>
 
     <% if user_signed_in? && current_user.admin? %>
       <%= link_to "Подписки", admin_subscriptions_url %>
