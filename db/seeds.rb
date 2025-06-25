@@ -2514,7 +2514,7 @@
 @hex_symbols = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
 
 def seed
-  reset_db
+  # reset_db
   create_users(10)
   create_projects(100)
   create_swatches(10..20)
